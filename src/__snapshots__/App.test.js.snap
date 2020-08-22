@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`测试页面 App 组件 1`] = `
+<div
+  className="App"
+  data-test="container"
+  title="zonghua"
+>
+  hello world !
+</div>
+`;
