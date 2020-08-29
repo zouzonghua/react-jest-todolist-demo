@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Header from '../../components/Header';
-import { findTestWrapper } from '../../utils/testUtils'
+import { findTestWrapper } from '../../../../utils/testUtils'
 
 it('Header 渲染样式正常', () => {
   const wrapper = shallow(<Header />)
