@@ -17,18 +17,24 @@ describe('TodoList 组件测试', () => {
 
   it('当 addUndoItem 被执行当时候， undoList 应该新增内容', () => {
     const wrapper = shallow(<TodoList />)
-    wrapper.instance().addUndoItem('学习 React')
+    const content = '学习 React'
+    const { addUndoItem } = wrapper.instance()
+    addUndoItem(content)
     expect(wrapper.state('undoList').length).toBe(1)
-    expect(wrapper.state('undoList')[0]).toBe('学习 React')
-    wrapper.instance().addUndoItem('学习 React')
+    expect(wrapper.state('undoList')[0]).toEqual({
+      status: 'div',
+      value: content
+    })
+    addUndoItem(content)
     expect(wrapper.state('undoList').length).toBe(2)
   });
 
-  it('应该给未完成列表传递 list 数据，以及 deleteItem 方法 ', () => {
+  it('UndoList 组件应该接受 list, deleteItem, changeStatus 参数', () => {
     const wrapper = shallow(<TodoList />)
     const UndoList = wrapper.find('UndoList')
     expect(UndoList.prop('list')).toBeTruthy()
     expect(UndoList.prop('deleteItem')).toBeTruthy()
+    expect(UndoList.prop('changeStatus')).toBeTruthy()
   });
 
   it('当 deleteItem 方法被执行时， undoList 应该删除数据', () => {

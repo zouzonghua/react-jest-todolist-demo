@@ -35,7 +35,7 @@ describe('Header 组件测试', () => {
   });
 
 
-  it('输入框输入回车时，如果input无内容，无操作', () => {
+  it('输入框无内容回车事件被触发，如果input无内容，无操作', () => {
     const fn = jest.fn()
     const wrapper = shallow(<Header addUndoItem={fn} />)
     const inputElem = findTestWrapper(wrapper, 'input')
@@ -45,7 +45,7 @@ describe('Header 组件测试', () => {
   })
 
 
-  it('输入框内容被触发时，外部传入当函数被调用，内容清空', () => {
+  it('输入框有内容回车事件被触发时，外部传入当函数被调用，内容清空', () => {
     const fn = jest.fn()
     const wrapper = shallow(<Header addUndoItem={fn} />)
     const inputElem = findTestWrapper(wrapper, 'input')

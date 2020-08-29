@@ -13,7 +13,7 @@ describe('UndoList 组件测试', () => {
   });
 
   it('未完成列表当数据有内容时 count 数目显示数据长度，列表不为空 ', () => {
-    const listData = ['学习 jest', '学习 TDD']
+    const listData = [{status: 'div', value: '学习 jest'}, {status: 'div', value: '学习 TDD'}]
     const wrapper = shallow(<UndoList list={listData} />)
     const countElem = findTestWrapper(wrapper, 'count')
     const listItems = findTestWrapper(wrapper, 'list-item')
@@ -22,18 +22,27 @@ describe('UndoList 组件测试', () => {
   });
 
   it('未完成列表当数据有内容时，要存在删除按钮', () => {
-    const listData = ['学习 jest', '学习 TDD']
+    const listData = [{status: 'div', value: '学习 jest'}, {status: 'div', value: '学习 TDD'}]
     const wrapper = shallow(<UndoList list={listData} />)
     const deleteItems = findTestWrapper(wrapper, 'delete-item')
     expect(deleteItems.length).toEqual(2)
   });
 
   it('未完成列表当数据有内容时，点击某个删除按钮，会调用删除方法 ', () => {
-    const listData = ['学习 jest', '学习 TDD']
+    const listData = [{status: 'div', value: '学习 jest'}, {status: 'div', value: '学习 TDD'}]
     const fn = jest.fn();
     const wrapper = shallow(<UndoList deleteItem={fn} list={listData} />)
     const deleteItems = findTestWrapper(wrapper, 'delete-item')
     deleteItems.at(1).simulate('click')
+    expect(fn).toHaveBeenLastCalledWith(1)
+  });
+
+  it('当某一项被点击时，触发执行 changeStatus 函数 ', () => {
+    const listData = ['学习 jest', '学习 TDD']
+    const fn = jest.fn();
+    const wrapper = shallow(<UndoList changeStatus={fn} list={listData} />)
+    const listItems = findTestWrapper(wrapper, 'list-item')
+    listItems.at(1).simulate('click')
     expect(fn).toHaveBeenLastCalledWith(1)
   });
 
