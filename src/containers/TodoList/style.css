@@ -79,3 +79,11 @@ body {
   margin-right: 6px;
   cursor: pointer;
 }
+
+.undo-list-item-input {
+  width: 300px;
+  line-height: 22px;
+  font-size: 14px;
+  text-indent: 10px;
+  outline: none;
+}

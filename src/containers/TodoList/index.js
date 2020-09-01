@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Header from "./components/Header";
-import UndoList from "./components/UndoList";
-import "./style.css";
+import React, { Component } from 'react';
+import Header from './components/Header';
+import UndoList from './components/UndoList';
+import './style.css';
 
 class TodoList extends Component {
   constructor(props) {
@@ -13,14 +13,19 @@ class TodoList extends Component {
     this.addUndoItem = this.addUndoItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.changeStatus = this.changeStatus.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
+    this.valueChange = this.valueChange.bind(this);
   }
 
   addUndoItem(value) {
     this.setState({
-      undoList: [...this.state.undoList, {
-        status: 'div',
-        value
-      }],
+      undoList: [
+        ...this.state.undoList,
+        {
+          status: 'div',
+          value,
+        },
+      ],
     });
   }
 
@@ -31,7 +36,45 @@ class TodoList extends Component {
   }
 
   changeStatus(index) {
-    console.log(index)
+    const newList = this.state.undoList.map((item, listIndex) => {
+      if (index === listIndex) {
+        return {
+          ...item,
+          status: 'input',
+        };
+      }
+      return {
+        ...item,
+        status: 'div',
+      };
+    });
+    this.setState({ undoList: newList });
+  }
+
+  handleBlur(index) {
+    const newList = this.state.undoList.map((item, listIndex) => {
+      if (index === listIndex) {
+        return {
+          ...item,
+          status: 'div',
+        };
+      }
+      return item;
+    });
+    this.setState({ undoList: newList });
+  }
+
+  valueChange(index, value) {
+    const newList = this.state.undoList.map((item, listIndex) => {
+      if (index === listIndex) {
+        return {
+          ...item,
+          value,
+        };
+      }
+      return item;
+    });
+    this.setState({ undoList: newList });
   }
 
   render() {
@@ -39,7 +82,13 @@ class TodoList extends Component {
     return (
       <div>
         <Header addUndoItem={this.addUndoItem} />
-        <UndoList list={undoList} deleteItem={this.deleteItem} changeStatus={this.changeStatus} />
+        <UndoList
+          list={undoList}
+          valueChange={this.valueChange}
+          handleBlur={this.handleBlur}
+          deleteItem={this.deleteItem}
+          changeStatus={this.changeStatus}
+        />
       </div>
     );
   }

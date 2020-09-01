@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class UndoList extends Component {
   render() {
-    const { list, deleteItem, changeStatus } = this.props;
+    const { list, deleteItem, changeStatus, handleBlur,valueChange } = this.props;
     return (
       <div className="undo-list">
         <div className="undo-list-title">
@@ -19,10 +19,22 @@ class UndoList extends Component {
               data-test="list-item"
               key={index}
             >
-              {item.value}
+              {item.status === 'div' ? (
+                item.value
+              ) : (
+                <input
+                  className='undo-list-item-input'
+                  onBlur={() => handleBlur(index)}
+                  onChange={(e) => valueChange(index, e.target.value)}
+                  value={item.value}
+                  data-test="input" />
+              )}
               <span
                 className="undo-list-delete"
-                onClick={() => deleteItem(index)}
+                onClick={(e) => {
+                  e && e.stopPropagation();
+                  deleteItem(index)
+                }}
                 data-test="delete-item"
               >
                 -

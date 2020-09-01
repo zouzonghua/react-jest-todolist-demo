@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UndoList 组件测试 样式正常 1`] = `
+<div
+  className="undo-list"
+>
+  <div
+    className="undo-list-title"
+  >
+    正在进行
+    <div
+      className="undo-list-count"
+      data-test="count"
+    >
+      2
+    </div>
+  </div>
+  <ul
+    className="undo-list-content"
+  >
+    <li
+      className="undo-list-item"
+      data-test="list-item"
+      key="0"
+      onClick={[Function]}
+    >
+      学习 jest
+      <span
+        className="undo-list-delete"
+        data-test="delete-item"
+        onClick={[Function]}
+      >
+        -
+      </span>
+    </li>
+    <li
+      className="undo-list-item"
+      data-test="list-item"
+      key="1"
+      onClick={[Function]}
+    >
+      学习 TDD
+      <span
+        className="undo-list-delete"
+        data-test="delete-item"
+        onClick={[Function]}
+      >
+        -
+      </span>
+    </li>
+  </ul>
+</div>
+`;
