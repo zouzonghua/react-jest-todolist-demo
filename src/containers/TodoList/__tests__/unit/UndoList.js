@@ -43,17 +43,42 @@ describe('UndoList 组件测试', () => {
     expect(deleteItems.length).toEqual(2);
   });
 
-  it('未完成列表当数据有内容时，点击某个删除按钮，会调用删除方法 ', () => {
+  it('未完成列表当数据有内容时，点击某个删除按钮，会调用 deleteItem 方法 ', () => {
     const listData = [
       { status: 'div', value: '学习 jest' },
       { status: 'div', value: '学习 TDD' },
     ];
     const fn = jest.fn();
+    const index = 1;
     const wrapper = shallow(<UndoList deleteItem={fn} list={listData} />);
     const deleteItems = findTestWrapper(wrapper, 'delete-item');
-    deleteItems.at(1).simulate('click');
-    expect(fn).toHaveBeenLastCalledWith(1);
+    deleteItems.at(index).simulate('click');
+    expect(fn).toHaveBeenLastCalledWith(index);
   });
+
+  it('未完成列表当数据有内容时，要存在复选框完成按钮', () => {
+    const listData = [
+      { status: 'div', value: '学习 jest' },
+      { status: 'div', value: '学习 TDD' },
+    ];
+    const wrapper = shallow(<UndoList list={listData} />);
+    const deleteItems = findTestWrapper(wrapper, 'checkbox');
+    expect(deleteItems.length).toEqual(2);
+  });
+
+  it('未完成列表当数据有内容时，当复选框按钮选中时，会调用 completeItem 方法 ', () => {
+    const listData = [
+      { status: 'div', value: '学习 jest' },
+      { status: 'div', value: '学习 TDD' },
+    ];
+    const fn = jest.fn();
+    const index = 1;
+    const wrapper = shallow(<UndoList completeItem={fn} list={listData} />);
+    const checkboxItems = findTestWrapper(wrapper, 'checkbox');
+    checkboxItems.at(index).simulate('change', {target: {checked: true}, stopPropagation: jest.fn()});
+    expect(fn).toHaveBeenLastCalledWith(index);
+  });
+
 
   it('当某一项被点击时，触发执行 changeStatus 函数 ', () => {
     const listData = [

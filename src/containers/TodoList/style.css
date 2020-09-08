@@ -4,7 +4,7 @@
 }
 
 body {
-  background-color: #CDCDCD;
+  background-color: #cdcdcd;
 }
 
 .header {
@@ -29,61 +29,81 @@ body {
   padding: 0 10px;
 }
 
-.undo-list {
+.undo-list,
+.complete-list {
   width: 600px;
   margin: 0 auto;
 }
 
-.undo-list-title {
+.undo-list-title,
+.complete-list-title {
   margin: 10px 0;
   line-height: 30px;
   font-size: 24px;
   font-weight: bold;
 }
 
-.undo-list-count {
+.undo-list-count,
+.complete-list-count {
   float: right;
   width: 30px;
   height: 30px;
   font-size: 12px;
   text-align: center;
-  background: #E6E6E6;
+  background: #e6e6e6;
   border-radius: 50%;
 }
 
-
-.undo-list-content {
+.undo-list-content,
+.complete-list-content {
   list-style-type: none;
 }
 
-.undo-list-item {
-  line-height: 32px;
-  font-size: 14px;
+.undo-list-item,
+.complete-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
   margin-bottom: 10px;
-  background-color: #FFF;
-  border-left: 3px solid #629A9C;
+  background-color: #fff;
+  border-left: 3px solid #629a9c;
   text-indent: 10px;
   border-radius: 3px;
 }
+.undo-list-item > div,
+.complete-list-item > div {
+  display: flex;
+  align-items: center;
+}
 
-.undo-list-delete {
-  float: right;
+.undo-list-delete,
+.complete-list-delete {
   width: 20px;
   height: 20px;
   line-height: 20px;
   text-align: center;
-  background-color: #E6E6EA;
+  background-color: #e6e6ea;
   text-indent: 0;
   border-radius: 50%;
-  margin-top: 6px;
-  margin-right: 6px;
   cursor: pointer;
 }
 
-.undo-list-item-input {
+.undo-list-item-input,
+.complete-list-item-input {
   width: 300px;
   line-height: 22px;
   font-size: 14px;
   text-indent: 10px;
   outline: none;
+}
+
+.undo-list-item-checkbox,
+.complete-list-item-checkbox {
+  width: 16px;
+  height: 16px;
+}
+
+.complete-list-item {
+  opacity: .6;
 }

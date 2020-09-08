@@ -1,33 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UndoList 组件测试 样式正常 1`] = `
+exports[`Complete 组件测试 样式正常 1`] = `
 <div
-  className="undo-list"
+  className="complete-list"
 >
   <div
-    className="undo-list-title"
+    className="complete-list-title"
   >
-    正在进行
+    已完成
     <div
-      className="undo-list-count"
+      className="complete-list-count"
       data-test="count"
     >
       2
     </div>
   </div>
   <ul
-    className="undo-list-content"
+    className="complete-list-content"
   >
     <li
-      className="undo-list-item"
+      className="complete-list-item"
       data-test="list-item"
       key="0"
-      onClick={[Function]}
     >
       <div>
         <input
           checked={false}
-          className="undo-list-item-checkbox"
+          className="complete-list-item-checkbox"
           data-test="checkbox"
           onChange={[Function]}
           type="checkbox"
@@ -37,7 +36,7 @@ exports[`UndoList 组件测试 样式正常 1`] = `
         </span>
       </div>
       <span
-        className="undo-list-delete"
+        className="complete-list-delete"
         data-test="delete-item"
         onClick={[Function]}
       >
@@ -45,15 +44,14 @@ exports[`UndoList 组件测试 样式正常 1`] = `
       </span>
     </li>
     <li
-      className="undo-list-item"
+      className="complete-list-item"
       data-test="list-item"
       key="1"
-      onClick={[Function]}
     >
       <div>
         <input
           checked={false}
-          className="undo-list-item-checkbox"
+          className="complete-list-item-checkbox"
           data-test="checkbox"
           onChange={[Function]}
           type="checkbox"
@@ -63,7 +61,7 @@ exports[`UndoList 组件测试 样式正常 1`] = `
         </span>
       </div>
       <span
-        className="undo-list-delete"
+        className="complete-list-delete"
         data-test="delete-item"
         onClick={[Function]}
       >

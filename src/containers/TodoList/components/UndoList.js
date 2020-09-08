@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class UndoList extends Component {
   render() {
-    const { list, deleteItem, changeStatus, handleBlur,valueChange } = this.props;
+    const { list, deleteItem, changeStatus, handleBlur,valueChange,completeItem } = this.props;
     return (
       <div className="undo-list">
         <div className="undo-list-title">
@@ -19,16 +19,22 @@ class UndoList extends Component {
               data-test="list-item"
               key={index}
             >
-              {item.status === 'div' ? (
-                item.value
-              ) : (
-                <input
-                  className='undo-list-item-input'
-                  onBlur={() => handleBlur(index)}
-                  onChange={(e) => valueChange(index, e.target.value)}
-                  value={item.value}
-                  data-test="input" />
-              )}
+              <div>
+                <input className='undo-list-item-checkbox' checked={false} onChange={(e) => {
+                  e && e.stopPropagation();
+                  e.target.checked && completeItem(index)
+                }} type="checkbox" data-test="checkbox" />
+                {item.status === 'div' ? (
+                  <span>{item.value}</span>
+                ) : (
+                  <input
+                    className='undo-list-item-input'
+                    onBlur={() => handleBlur(index)}
+                    onChange={(e) => valueChange(index, e.target.value)}
+                    value={item.value}
+                    data-test="input" />
+                )}
+              </div>
               <span
                 className="undo-list-delete"
                 onClick={(e) => {

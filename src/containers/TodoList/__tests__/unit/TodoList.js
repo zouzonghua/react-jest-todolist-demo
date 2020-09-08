@@ -28,7 +28,7 @@ describe('TodoList 组件测试', () => {
     expect(wrapper.state('undoList').length).toBe(2);
   });
 
-  it('UndoList 组件应该接受 list, deleteItem, changeStatus, handleBlur,valueChange 参数', () => {
+  it('UndoList 组件应该接受 list, deleteItem, changeStatus, handleBlur,valueChange,completeItem 参数', () => {
     const wrapper = shallow(<TodoList />);
     const UndoList = wrapper.find('UndoList');
     expect(UndoList.prop('list')).toBeTruthy();
@@ -36,6 +36,7 @@ describe('TodoList 组件测试', () => {
     expect(UndoList.prop('changeStatus')).toBeTruthy();
     expect(UndoList.prop('handleBlur')).toBeTruthy();
     expect(UndoList.prop('valueChange')).toBeTruthy();
+    expect(UndoList.prop('completeItem')).toBeTruthy();
   });
 
   it('当 deleteItem 方法被执行时， undoList 应该删除数据', () => {
@@ -88,5 +89,55 @@ describe('TodoList 组件测试', () => {
       value
     });
   });
+
+
+  it('当 completeItem 方法被执行时， undoList 应该把数据移动到 completeList 数组', () => {
+    const wrapper = shallow(<TodoList />);
+    const data = [
+      { status: 'div', value: '学习 jest' },
+      { status: 'div', value: '学习 TDD' },
+    ];
+    wrapper.setState({ undoList: data });
+    wrapper.instance().completeItem(1);
+    expect(wrapper.state('undoList')).toEqual([data[0]]);
+    expect(wrapper.state('completeList')).toEqual([data[1]])
+  });
+
+
+
+  it('Complete 组件应该接受 list, deleteCompleteItem, undoCompleteItem 参数', () => {
+    const wrapper = shallow(<TodoList />);
+    const Complete = wrapper.find('Complete');
+    expect(Complete.prop('list')).toBeTruthy();
+    expect(Complete.prop('deleteCompleteItem')).toBeTruthy();
+    expect(Complete.prop('undoCompleteItem')).toBeTruthy();
+  });
+
+
+  it('当 deleteCompleteItem 方法被执行时， completeList 应该删除数据', () => {
+    const wrapper = shallow(<TodoList />);
+    const data = [
+      { status: 'div', value: '学习 jest' },
+      { status: 'div', value: '学习 TDD' },
+    ];
+    wrapper.setState({ completeList: data });
+    wrapper.instance().deleteCompleteItem(1);
+    expect(wrapper.state('completeList')).toEqual([data[0]]);
+  });
+
+
+  it('当 undoCompleteItem 方法被执行时， completeList 应该把数据移动到 undoList 数组', () => {
+    const wrapper = shallow(<TodoList />);
+    const data = [
+      { status: 'div', value: '学习 jest' },
+      { status: 'div', value: '学习 TDD' },
+    ];
+    wrapper.setState({ completeList: data });
+    wrapper.instance().undoCompleteItem(1);
+    expect(wrapper.state('completeList')).toEqual([data[0]]);
+    expect(wrapper.state('undoList')).toEqual([data[1]])
+  });
+
+
 
 });
