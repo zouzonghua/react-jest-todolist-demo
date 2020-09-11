@@ -64,9 +64,9 @@
   },
   "scripts": {
     "start": "env-cmd -f .env.staging node scripts/start.js",
-    "build:dev": "env-cmd -f .env.development cross-env node scripts/build.js",
-    "build:stage": "env-cmd -f .env.staging cross-env node scripts/build.js",
-    "build:prod": "env-cmd -f .env.production cross-env node scripts/build.js",
+    "build:dev": "env-cmd -f .env.development node scripts/build.js",
+    "build:stage": "env-cmd -f .env.staging node scripts/build.js",
+    "build:prod": "env-cmd -f .env.production node scripts/build.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
