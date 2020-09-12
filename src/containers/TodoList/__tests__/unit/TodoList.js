@@ -80,7 +80,7 @@ describe('TodoList 组件测试', () => {
 
   it('valueChange 方法被执行时， undoList 数据项 value 被修改', () => {
     const wrapper = shallow(<TodoList />);
-    const data = [{ status: 'input', value: '学习 jest' },];
+    const data = [{ status: 'input', value: '学习 jest' },{ status: 'div', value: '学习 react' },];
     const value = 'zonghua'
     wrapper.setState({ undoList: data });
     wrapper.instance().valueChange(0, value);
