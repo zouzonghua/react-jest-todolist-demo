@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## 项目演示地址
-Open [http://cloud.zonghua.me:3002](http://cloud.zonghua.me:3002) to view it in the browser.
+Open [http://cloud.zonghua.me:3002/react-jest-todolist/](http://cloud.zonghua.me:3002/react-jest-todolist/) to view it in the browser.
 
 ## Available Scripts
 
