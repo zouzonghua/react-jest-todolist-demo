@@ -23,5 +23,5 @@ jobs:
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           REPOSITORY_NAME: zouzonghua/react-jest-todolist-demo
-          BRANCH: gh-pages
+          BRANCH: master
           FOLDER: build
