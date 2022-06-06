@@ -4,4 +4,4 @@
 
 ## online preview
 
-- [click me](zouzonghua.github.io/react-jest-todolist-demo/)
+- [click me](http://zouzonghua.github.io/react-jest-todolist-demo/)
